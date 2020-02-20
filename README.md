@@ -3,6 +3,8 @@ BatchOCR er et program der kan batch-OCR-behandle TIF-dokumenter, baseret på op
 
 Det er lavet i C#/.NET Framework 4.7.2 med WPF og kan således kun afvikles på Windows.
 
+![Screendump](../master/screenshot.png?raw=true)
+
 Programmet paralleliserer OCR-behandlingen vha. .NET’s *Task Parallel Library*, så processorkraften udnyttes mest muligt på flerkernede maskiner. Programmet kalder Tesseract ved at starte kommandolinjeudgaven i ny proces. For at undgå at der oprettes for mange processer med dertilhørende overhead af multitrådningsprocessering er der indført en maksimalværdi for antal parallelle processer svarende til antallet af processorer på maskinen. Test viser at CPU stadig udnyttes 100 %, men at udførelsestiden bliver en smule kortere.
 
 Programmet skaber en samlet SQLite-databasefil, hvor data fra hele kørslen ligger med en række pr. side (både fra enkelt- og flersidede TIF’er). Denne fil må viderebehandles eller tilgås vha. fx DB Manager for SQLite.
@@ -24,6 +26,3 @@ For at køre programmet skal Tesseract være installeret på maskinen. Brug den 
 Stien til tesseract.exe (typisk C:\Program Files\Tesseract-OCR) skal registreres i Windows PATH-miljøvariabel, så BatchOCR kan kalde den.
 
 BatchOCR skal muligvis afvikles i administrator-mode for at kunne få de nødvendige skriverettigheder.
-
-![Screendump](../master/screenshot.png?raw=true)
-![Screendump](../master/screenshot.png?raw=true)
